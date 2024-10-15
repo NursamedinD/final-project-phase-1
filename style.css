@@ -1,6 +1,10 @@
 body {
-  font-family: 'Public Pixel', sans-serif;
+  font-family: 'VT323', monospace;
   text-align: center;
+}
+
+.h1 {
+ font-family: 'VT323', monospace; 
 }
 
 canvas{
@@ -11,9 +15,15 @@ canvas{
   margin-top: 20px;
 }
 
+.scoreBar{
+  font-size: 50px;
+  font-family: 'VT323', monospace;
+}
+
 button {
   padding: 10px;
   margin: 5px;
   font-size: 20px;
-  font-family: 'Public Pixel', sans-serif;
+  font-family: 'VT323', monospace;
+  border: 5px solid black;
 }
