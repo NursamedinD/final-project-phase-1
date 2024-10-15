@@ -1,1 +1,7 @@
-{}
+{
+  "settings" :{
+    "gridSize": 20,
+    "initialSnakeLenght": 2,
+    "snakeSpeed": 50
+  }
+}

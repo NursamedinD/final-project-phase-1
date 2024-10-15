@@ -4,17 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="js/index.js"></script>
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Pixel&display=swap" rel="stylesheet">
+
 </head>
-
 <body>
+  <div class="gameContainer">
+     <canvas id="gameCanvas" width="500" height="500"></canvas>
+     <div id="score">0</div>
+     <div class="pressing">
+      <button id="startBtn">Start Button</button>
+      <button id="pauseBtn">Pause</button>
+      <button id="resetBtn">Reset</button>
+     </div>
 
+  </div>
 
-
-
-
+  <script src="js/index.js"></script>
 </body>
 
 </html>
