@@ -77,9 +77,9 @@ function gamePause() {
 
 }
 
-function gameOver() {
+function gameOver(autoRestart = true) {
   clearInterval(gameinterval);
-  alert('Game Over! Your score: ${score}');
+  alert(`Game Over! Your score: ${score}`);
 
   snake = [{ x: 10, y: 10 }];
   direction = { x: 1, y: 0 };
@@ -87,7 +87,11 @@ function gameOver() {
   score = 0;
   started = false;
   paused = false;
-  pauseBtn.textContent = 'Pause'
+  pauseBtn.textContent = 'Pause';
+
+  if (autoRestart) {
+    gameStart();
+  }
 }
 
 function updateGame() {
@@ -139,7 +143,7 @@ document.addEventListener("keydown", (e) => {
 pauseBtn.addEventListener("click", gamePause);
 startBtn.addEventListener("click", gameStart);
 resetBtn.addEventListener("click", () => {
-  gameOver();
+  gameOver(false);
 })
 
 drawGame();
