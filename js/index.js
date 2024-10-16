@@ -21,8 +21,8 @@ const fetchSettings = async () => {
     const response = await fetch('http://localhost:3000/settings');
     const settings = await response.json();
     gridSize = settings.gridSize;
-    snakeSpeed = settings.speed;
-    snake = Array.from({ length: settings.intialSnakeLength}, (_, i) => ({ x: 10 - i, y: 10}));    
+    snakeSpeed = settings.snakeSpeed;
+    snake = Array.from({ length: settings.initialSnakeLength }, (_, i) => ({ x: 10 - i, y: 10}));    
     
     console.log("Settings set:", settings);
   } catch (error) {
@@ -30,10 +30,22 @@ const fetchSettings = async () => {
   }
 };
 
-settingsForm.addEventListener('sumbit', function(event) {
+const settingsForm = document.querySelector('#settingsForm');
+
+settingsForm.addEventListener('submit', function(event) {
   event.preventDefault();
 
-  const gridSizeInput = document
+  const gridSizeInput = document.querySelector('#gridSizeInput').value;
+  const newGridSize = Number(gridSizeInput);
+
+  const speedInput = document.querySelector('#speedInput').value;
+  const newSnakeSpeed = Number(speedInput);
+
+  gridSize = newGridSize;
+  snakeSpeed = newSnakeSpeed;
+
+  console.log("New Grid Size:", newGridSize);
+  console.log("New Snake Speed:", newSnakeSpeed);
 })
 
 function drawGame() {
