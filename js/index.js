@@ -13,7 +13,7 @@ let direction = { x: 1, y: 0 };
 let score = 0;
 let snakeSpeed = 5;
 let gridSize = 20;
-let berry = { x: Math.floor(Math.random() * 25), y: Math.floor(Math.random() * 25) };
+let berry = getRandomBerryPosition();
 
 
 const fetchSettings = async () => {
@@ -46,7 +46,14 @@ settingsForm.addEventListener('submit', function(event) {
 
   console.log("New Grid Size:", newGridSize);
   console.log("New Snake Speed:", newSnakeSpeed);
-})
+});
+
+function getRandomBerryPosition() {
+  return {
+    x: Math.floor(Math.random() * (canvas.width / gridSize)),
+    y: Math.floor(Math.random() * (canvas.height / gridSize))
+  };
+}
 
 function drawGame() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -78,15 +85,15 @@ function collisionCheck() {
 }
 
 function gameStart() {
-  if (!started)
+  if (!started && !paused) {
     gameinterval = setInterval(updateGame, 1000 / snakeSpeed);
-  started = true;
+    started = true;
+  }
 }
 
 function gamePause() {
   if (!paused) {
     clearInterval(gameinterval);
-    alert('Game is Paused.')
     pauseBtn.textContent = "Resume";
     paused = true;
   } else {
@@ -103,8 +110,9 @@ function gameOver(autoRestart = true) {
 
   snake = [{ x: 10, y: 10 }];
   direction = { x: 1, y: 0 };
-  berry = { x: Math.floor(Math.random() * 25), y: Math.floor(Math.random() * 25) };
+  berry = getRandomBerryPosition();
   score = 0;
+  scoreText.textContent = score;
   started = false;
   paused = false;
   pauseBtn.textContent = 'Pause';
@@ -123,7 +131,7 @@ function updateGame() {
     if (snake[0].x === berry.x && snake[0].y === berry.y) {
       score++;
       scoreText.textContent = score;
-      berry = { x: Math.floor(Math.random() * (canvas.width / gridSize)), y: Math.floor(Math.random() * (canvas.height / gridSize)) };
+      berry = getRandomBerryPosition
     } else {
       snake.pop();
     }
