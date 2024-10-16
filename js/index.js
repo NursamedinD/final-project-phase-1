@@ -108,10 +108,38 @@ function updateGame() {
   }
 }
 
+document.addEventListener("keydown", (e) => {
+  switch (e.key) {
+    case "ArrowUp":
+      if (direction.y === 0) {
+        direction = { x: 0, y: -1 };
+      }
+      break;
+    case "ArrowDown":
+      if (direction.y === 0) {
+        direction = { x: 0, y: 1 };
+      }
+      break;
+    case "ArrowLeft":
+      if (direction.x === 0) {
+        direction = { x: -1, y: 0 };
+      }
+      break;
+    case "ArrowRight":
+      if (direction.x === 0) {
+        direction = { x: 1, y: 0 };
+      }
+      break;
+  }
 
+
+});
 
 
 pauseBtn.addEventListener("click", gamePause);
 startBtn.addEventListener("click", gameStart);
+resetBtn.addEventListener("click", () => {
+  gameOver();
+})
 
 drawGame();
