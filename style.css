@@ -9,6 +9,7 @@ body {
 
 canvas{
   border: 5px solid black;
+  background-color: rgb(87, 83, 83);
 }
 
 .pressing {

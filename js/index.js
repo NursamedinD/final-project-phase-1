@@ -60,7 +60,7 @@ function gamePause() {
     paused = true;
   } else {
     gameStart();
-    pauseBtn.textContent = "Pause"
+    pauseBtn.textContent = "II"
     paused = false;
   }
 
