@@ -91,11 +91,25 @@ function gameOver() {
 }
 
 function updateGame() {
-  // console.log("Game running...");
   if (started && !paused) {
+    moveSnake();
+    collisionCheck();
 
+
+    if (snake[0].x === berry.x && snake[0].y === berry.y) {
+      score++;
+      scoreText.textContent = score;
+      berry = { x: Math.floor(Math.random() * (canvas.width / gridSize)), y: Math.floor(Math.random() * (canvas.height / gridSize)) };
+    } else {
+      snake.pop();
+    }
+
+    drawGame();
   }
 }
+
+
+
 
 pauseBtn.addEventListener("click", gamePause);
 startBtn.addEventListener("click", gameStart);
