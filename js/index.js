@@ -98,7 +98,7 @@ function gamePause() {
     paused = true;
   } else {
     gameStart();
-    pauseBtn.textContent = "II"
+    pauseBtn.textContent = "Pause"
     paused = false;
   }
 
@@ -131,7 +131,7 @@ function updateGame() {
     if (snake[0].x === berry.x && snake[0].y === berry.y) {
       score++;
       scoreText.textContent = score;
-      berry = getRandomBerryPosition
+      berry = getRandomBerryPosition();
     } else {
       snake.pop();
     }
