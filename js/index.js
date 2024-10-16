@@ -30,21 +30,11 @@ const fetchSettings = async () => {
   }
 };
 
-const updateSettings = async (newSettings) => {
-  try {
-    const response = await fetch('http://localhost:3000/settings', {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newSettings)
-    });
-    const updatedSettings =  await response.json();
-    console.log("Settings updated:", updatedSettings);
-  } catch (error) {
-    console.error("Settings update failed:", error);
-  }
-}
+settingsForm.addEventListener('sumbit', function(event) {
+  event.preventDefault();
+
+  const gridSizeInput = document
+})
 
 function drawGame() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
