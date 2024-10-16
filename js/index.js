@@ -22,11 +22,29 @@ const fetchSettings = async () => {
     const settings = await response.json();
     gridSize = settings.gridSize;
     snakeSpeed = settings.speed;
+    snake = Array.from({ length: settings.intialSnakeLength}, (_, i) => ({ x: 10 - i, y: 10}));    
+    
     console.log("Settings set:", settings);
   } catch (error) {
     console.error("Settings failed to load:", error);
   }
 };
+
+const updateSettings = async (newSettings) => {
+  try {
+    const response = await fetch('http://localhost:3000/settings', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newSettings)
+    });
+    const updatedSettings =  await response.json();
+    console.log("Settings updated:", updatedSettings);
+  } catch (error) {
+    console.error("Settings update failed:", error);
+  }
+}
 
 function drawGame() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
