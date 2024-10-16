@@ -6,9 +6,10 @@ const pauseBtn = document.querySelector("#pauseBtn");
 const startBtn = document.querySelector('#startBtn');
 
 let gameinterval;
-let started
+let started = false;
 let paused = false;
 let snake = [{ x: 10, y: 10 }];
+let direction = { x: 1, y: 0};
 let score = 0;
 let snakeSpeed = 5;
 let gridSize = 20;
@@ -56,13 +57,27 @@ function gamePause() {
     pauseBtn.textContent = "Pause"
     paused = false;
   }
-  pauseBtn.addEventListener("click", gamePause);
+
+}
+
+function gameOver() {
+  clearInterval(gameinterval);
+  alert('Game Over! Your score: ${score}');
+
+  snake = [{x: 10, y:10 }];
+  direction = {x: 1, y: 0};
+  berry = {x: Math.floor(Math.random() *25), y: Math.floor(Math.random() * 25) };
+  score = 0;
+  started = false;
+  paused = false;
+  pauseBtn.textContent = 'Pause'
 }
 
 function updateGame() {
   console.log("Game running...");
 }
 
+pauseBtn.addEventListener("click", gamePause);
+startBtn.addEventListener("click", gameStart);
 
-
-gameStart();
+drawGame();
