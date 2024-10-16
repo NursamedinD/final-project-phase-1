@@ -43,9 +43,13 @@ function drawGame() {
 function moveSnake() {
   const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y};
   snake.unshift(head);
-  snake.pop();
 }
 
+function collisionCheck() {
+  if (snake[0].x < 0 || snake[0].x >= canvas.width / gridSize || snake[0].y < 0 || snake[0].y >= canvas.height / gridSize) {
+    gameOver();
+  }
+}
 
 function gameStart() {
   if (!started)
@@ -56,6 +60,7 @@ function gameStart() {
 function gamePause() {
   if (!paused) {
     clearInterval(gameinterval);
+    alert('Game is Paused.')
     pauseBtn.textContent = "Resume";
     paused = true;
   } else {
@@ -80,7 +85,10 @@ function gameOver() {
 }
 
 function updateGame() {
-  console.log("Game running...");
+  // console.log("Game running...");
+  if (started && !paused) {
+
+  }
 }
 
 pauseBtn.addEventListener("click", gamePause);
