@@ -12,7 +12,7 @@ let snake = [{ x: 10, y: 10 }];
 let score = 0;
 let snakeSpeed = 5;
 let gridSize = 20;
-let berry = {x: Math.floor(Math.random() * 25), y: Math.floor(Math.random() * 25)};
+let berry = { x: Math.floor(Math.random() * 25), y: Math.floor(Math.random() * 25) };
 
 
 const fetchSettings = async () => {
@@ -26,6 +26,18 @@ const fetchSettings = async () => {
     console.error("Settings failed to load:", error);
   }
 };
+
+function drawGame() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  snake.forEach(segment => {
+    ctx.fillStyle = "red";
+    ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize);
+  })
+
+  ctx.fillStyle = "yellow";
+  ctx.fillRect(berry.x * gridSize, berry.y * gridSize, gridSize, gridSize);
+}
 
 
 function gameStart() {
