@@ -9,7 +9,7 @@ let gameinterval;
 let started = false;
 let paused = false;
 let snake = [{ x: 10, y: 10 }];
-let direction = { x: 1, y: 0};
+let direction = { x: 1, y: 0 };
 let score = 0;
 let snakeSpeed = 5;
 let gridSize = 20;
@@ -41,13 +41,19 @@ function drawGame() {
 }
 
 function moveSnake() {
-  const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y};
+  const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
   snake.unshift(head);
 }
 
 function collisionCheck() {
   if (snake[0].x < 0 || snake[0].x >= canvas.width / gridSize || snake[0].y < 0 || snake[0].y >= canvas.height / gridSize) {
     gameOver();
+  }
+
+  for (let i = 1; i < snake.length; i++) {
+    if (snake[0].x === snake[i].x && snake[0].y === snake[i].y) {
+      gameOver();
+    }
   }
 }
 
@@ -75,9 +81,9 @@ function gameOver() {
   clearInterval(gameinterval);
   alert('Game Over! Your score: ${score}');
 
-  snake = [{x: 10, y:10 }];
-  direction = {x: 1, y: 0};
-  berry = {x: Math.floor(Math.random() *25), y: Math.floor(Math.random() * 25) };
+  snake = [{ x: 10, y: 10 }];
+  direction = { x: 1, y: 0 };
+  berry = { x: Math.floor(Math.random() * 25), y: Math.floor(Math.random() * 25) };
   score = 0;
   started = false;
   paused = false;
