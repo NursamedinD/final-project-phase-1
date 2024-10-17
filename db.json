@@ -1,7 +1,27 @@
 {
   "settings": {
+    "item": {
+      "item": {
+        "item": {
+          "item": {
+            "item": {
+              "gridSize": 20,
+              "snakeSpeed": 5,
+              "initialSnakeLength": 3
+            },
+            "gridSize": 30,
+            "snakeSpeed": 10
+          },
+          "gridSize": 1000,
+          "snakeSpeed": 45
+        },
+        "gridSize": 20,
+        "snakeSpeed": 5
+      },
+      "gridSize": 20,
+      "snakeSpeed": 50
+    },
     "gridSize": 20,
-    "snakeSpeed": 5,
-    "initialSnakeLength": 3
+    "snakeSpeed": 15
   }
 }

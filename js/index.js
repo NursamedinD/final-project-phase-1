@@ -19,7 +19,9 @@ let berry = getRandomBerryPosition();
 const fetchSettings = async () => {
   try {
     const response = await fetch('http://localhost:3000/settings');
+    if (!response.ok) throw new Error('Failed to fetch settings');
     const settings = await response.json();
+
     gridSize = settings.gridSize;
     snakeSpeed = settings.snakeSpeed;
     snake = Array.from({ length: settings.initialSnakeLength }, (_, i) => ({ x: 10 - i, y: 10 }));
@@ -30,18 +32,17 @@ const fetchSettings = async () => {
   }
 };
 
-const settingsForm = document.querySelector('#settingsForm');
+fetchSettings();
 
-settingsForm.addEventListener('submit', async function (event) {
+const settingsForm = document.getElementById('settingsForm');
+
+settingsForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  const gridSizeInput = document.querySelector('#gridSizeInput').value;
-  const newGridSize = Number(gridSizeInput);
+  const newGridSize = Number(document.getElementById('gridSizeInput').value);
+  const newSnakeSpeed = Number(document.getElementById('speedInput').value);
 
-  const speedInput = document.querySelector('#speedInput').value;
-  const newSnakeSpeed = Number(speedInput);
-
-  const newSettings = {
+  const updatedSettings = {
     gridSize: newGridSize,
     snakeSpeed: newSnakeSpeed
   };
@@ -52,19 +53,23 @@ settingsForm.addEventListener('submit', async function (event) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(newSettings)
+      body: JSON.stringify(updatedSettings)
     });
 
-    if (response.ok) {
-      const updatedSettings = await response.json();
-      console.log("Settings updated successfully:", updatedSettings);
-      gridSize = updatedSettings.gridSize;
-      snakeSpeed = updatedSettings.snakeSpeed;
-
-      resetSettings();
-    } else {
-      console.error("Failed to update settings.");
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
+
+    const result = await response.json();
+    console.log("Settings updated successfully:", result);
+
+    gridSize = result.gridSize;
+    snakeSpeed = result.snakeSpeed;
+
+    resetSettings();
+    clearInterval(gameinterval);
+    gameinterval = setInterval(updateGame, 1000 / snakeSpeed);
+
   } catch (error) {
     console.error("Error updating settings:", error);
   }
@@ -109,6 +114,7 @@ function collisionCheck() {
 
 function gameStart() {
   if (!started && !paused) {
+    clearInterval(gameinterval);
     gameinterval = setInterval(updateGame, 1000 / snakeSpeed);
     started = true;
   }
@@ -145,15 +151,18 @@ function gameOver(autoRestart = true) {
   }
 }
 
-// function resetSettings() {
-//   snake = [{ x: 10, y: 10 }];
-//   direction = { x: 1, y: 0 };
-//   berry = getRandomBerryPosition();
-//   score = 0;
-//   scoreText.textContent = score;
-//   clearInterval(gameinterval);
-//   gameStart();
-// }
+function resetSettings() {
+  snake = [{ x: 10, y: 10 }];
+  direction = { x: 1, y: 0 };
+  berry = getRandomBerryPosition();
+  score = 0;
+  scoreText.textContent = score;
+  clearInterval(gameinterval);
+
+  started = false;
+  gameStart();
+}
+
 
 function updateGame() {
   if (started && !paused) {
