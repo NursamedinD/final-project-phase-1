@@ -98,7 +98,7 @@ function drawGame() {
 function moveSnake() {
   console.log(snake);
 
-  if (snake.length > 0) {
+  if (snake.length > 0 && snake[0]) {
     const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
     snake.unshift(head);
   } else {
@@ -108,6 +108,11 @@ function moveSnake() {
 }
 
 function collisionCheck() {
+  if (snake.length === 0 || !snake[0]) {
+    console.error("Snake is empty or undefined");
+    return;
+  }
+
   if (snake[0].x < 0 || snake[0].x >= canvas.width / gridSize || snake[0].y < 0 || snake[0].y >= canvas.height / gridSize) {
     gameOver();
   }
@@ -153,7 +158,7 @@ function gameOver(autoRestart = true) {
   paused = false;
   pauseBtn.textContent = 'Pause';
 
-  if (autoRestart) {
+  if (autoRestart && snake.length > 0) {
     gameStart();
   }
 }
@@ -173,6 +178,14 @@ function resetSettings() {
 
 function updateGame() {
   if (started && !paused) {
+
+    if(snake.length === 0) {
+      console.error("Snake is empty!");
+      return;
+    }
+    
+    
+    
     moveSnake();
     collisionCheck();
 
