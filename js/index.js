@@ -22,8 +22,8 @@ const fetchSettings = async () => {
     const settings = await response.json();
     gridSize = settings.gridSize;
     snakeSpeed = settings.snakeSpeed;
-    snake = Array.from({ length: settings.initialSnakeLength }, (_, i) => ({ x: 10 - i, y: 10}));    
-    
+    snake = Array.from({ length: settings.initialSnakeLength }, (_, i) => ({ x: 10 - i, y: 10 }));
+
     console.log("Settings set:", settings);
   } catch (error) {
     console.error("Settings failed to load:", error);
@@ -32,7 +32,7 @@ const fetchSettings = async () => {
 
 const settingsForm = document.querySelector('#settingsForm');
 
-settingsForm.addEventListener('submit', function(event) {
+settingsForm.addEventListener('submit', async function (event) {
   event.preventDefault();
 
   const gridSizeInput = document.querySelector('#gridSizeInput').value;
@@ -41,12 +41,35 @@ settingsForm.addEventListener('submit', function(event) {
   const speedInput = document.querySelector('#speedInput').value;
   const newSnakeSpeed = Number(speedInput);
 
-  gridSize = newGridSize;
-  snakeSpeed = newSnakeSpeed;
+  const newSettings = {
+    gridSize: newGridSize,
+    snakeSpeed: newSnakeSpeed
+  };
 
-  console.log("New Grid Size:", newGridSize);
-  console.log("New Snake Speed:", newSnakeSpeed);
+  try {
+    const response = await fetch('http://localhost:3000/settings', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newSettings)
+    });
+
+    if (response.ok) {
+      const updatedSettings = await response.json();
+      console.log("Settings updated successfully:", updatedSettings);
+      gridSize = updatedSettings.gridSize;
+      snakeSpeed = updatedSettings.snakeSpeed;
+
+      resetSettings();
+    } else {
+      console.error("Failed to update settings.");
+    }
+  } catch (error) {
+    console.error("Error updating settings:", error);
+  }
 });
+
 
 function getRandomBerryPosition() {
   return {
