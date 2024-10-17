@@ -96,8 +96,15 @@ function drawGame() {
 }
 
 function moveSnake() {
-  const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
-  snake.unshift(head);
+  console.log(snake);
+
+  if (snake.length > 0) {
+    const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
+    snake.unshift(head);
+  } else {
+    console.error("Snake array is empty");
+  }
+
 }
 
 function collisionCheck() {
