@@ -145,6 +145,16 @@ function gameOver(autoRestart = true) {
   }
 }
 
+// function resetSettings() {
+//   snake = [{ x: 10, y: 10 }];
+//   direction = { x: 1, y: 0 };
+//   berry = getRandomBerryPosition();
+//   score = 0;
+//   scoreText.textContent = score;
+//   clearInterval(gameinterval);
+//   gameStart();
+// }
+
 function updateGame() {
   if (started && !paused) {
     moveSnake();
