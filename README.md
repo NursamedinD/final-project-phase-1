@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Snake Game
 
 This project here is based off of the classic game, Snake. This game works on a canvas for the gameboard and the snake is controlled with the arrow keys. You can play the game right here [insert link] (Note: it is preffered to read this file through in order to understand how the game works).
