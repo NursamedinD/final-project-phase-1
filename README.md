@@ -51,3 +51,15 @@ How to change the settings
 - Smaller grid size  value = smaller snake and berry (gameboard will look bigger compared to the snake and berry).
 - Higher speed value = high speed.
 - Lower speed value = low speed.
+
+2. To apply your settings
+- Press the update settings button.
+- Press the reset button to update the game with your prefered settings.
+- Press start to start playing.
+
+3. Reverting settings
+- the default values are Grid Size 20, Snake speed 5, will always be in the tab so it merely as simple as
+
+- Pressing the update settings button (open up the console to see if your changes have been made).
+- Press the reset button to apply.
+- Press Start to play again.
