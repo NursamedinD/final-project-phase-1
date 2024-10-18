@@ -45,7 +45,7 @@ How to start:
 2. Press Start to start playing.
 
 How to change the settings:
-1. Below you can find the settings form where you can submit your values
+1. Below the gameboard, you can find the settings form where you can submit your values
 ## Tip
 - Larger grid size value  = bigger snake and berry (gameboard will look smaller compared to the snake and berry).
 - Smaller grid size  value = smaller snake and berry (gameboard will look bigger compared to the snake and berry).
