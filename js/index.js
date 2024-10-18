@@ -145,7 +145,7 @@ function gamePause() {
 
 }
 
-function gameOver(autoRestart = true) {
+function gameOver() {
   clearInterval(gameinterval);
   alert(`Game Over! Your score: ${score}`);
 
@@ -157,10 +157,6 @@ function gameOver(autoRestart = true) {
   started = false;
   paused = false;
   pauseBtn.textContent = 'Pause';
-
-  if (autoRestart && snake.length > 0) {
-    gameStart();
-  }
 }
 
 function resetSettings() {
@@ -172,23 +168,20 @@ function resetSettings() {
   clearInterval(gameinterval);
 
   started = false;
-  gameStart();
+  resetSettings();
 }
 
 
 function updateGame() {
   if (started && !paused) {
 
-    if(snake.length === 0) {
+    if (snake.length === 0) {
       console.error("Snake is empty!");
       return;
     }
-    
-    
-    
+
     moveSnake();
     collisionCheck();
-
 
     if (snake[0].x === berry.x && snake[0].y === berry.y) {
       score++;
@@ -231,9 +224,15 @@ document.addEventListener("keydown", (e) => {
 
 
 pauseBtn.addEventListener("click", gamePause);
-startBtn.addEventListener("click", gameStart);
+startBtn.addEventListener("click", () => {
+  if (!started) {
+    gameStart();
+  }
+});
+
 resetBtn.addEventListener("click", () => {
-  gameOver(false);
-})
+  resetSettings();
+  drawGame();
+});
 
 drawGame();
