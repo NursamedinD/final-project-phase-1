@@ -20,7 +20,7 @@ let settingsLoaded = false
 
 const fetchSettings = async () => {
   try {
-    const response = await fetch('http://localhost:3000/settings');
+    const response = await fetch('https://snake-settings.onrender.com/settings');
     if (!response.ok) throw new Error('Failed to fetch settings');
     const settings = await response.json();
 
@@ -52,7 +52,7 @@ settingsForm.addEventListener('submit', async (event) => {
   };
 
   try {
-    const response = await fetch('http://localhost:3000/settings', {
+    const response = await fetch('https://snake-settings.onrender.com/settings', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
