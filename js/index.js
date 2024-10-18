@@ -96,7 +96,7 @@ function drawGame() {
 }
 
 function moveSnake() {
-  console.log(snake);
+  // console.log(snake);
 
   if (snake.length > 0 && snake[0]) {
     const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
@@ -168,7 +168,7 @@ function resetSettings() {
   clearInterval(gameinterval);
 
   started = false;
-  resetSettings();
+  // resetSettings();
 }
 
 
