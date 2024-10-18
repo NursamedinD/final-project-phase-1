@@ -185,7 +185,7 @@ function resetSettings() {
 function updateGame() {
   if (started && !paused) {
 
-    if (snake.length === 0) {
+    if (!snake || snake.length === 0) {
       console.error("Snake is empty!");
       return;
     }
