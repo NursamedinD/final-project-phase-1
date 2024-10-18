@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Snake Game
 
 This project here is based off of the classic game, Snake. This game works on a canvas for the gameboard and the snake is controlled with the arrow keys. You can play the game right here [insert link] (Note: it is preffered to read this file through in order to understand how the game works).
@@ -37,3 +38,6 @@ This project was made using:
 # Credits
 
 Like mentioned  above in the title, this game was based off the classic Snake Game, made by Taneli Armanto in 1988 which could be played on the Nokia 6110
+=======
+# Test
+>>>>>>> refs/remotes/origin/main
