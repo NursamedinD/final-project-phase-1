@@ -16,6 +16,8 @@ let gridSize = 20;
 let berry = getRandomBerryPosition();
 
 
+let settingsLoaded = false
+
 const fetchSettings = async () => {
   try {
     const response = await fetch('http://localhost:3000/settings');
@@ -27,10 +29,12 @@ const fetchSettings = async () => {
     snake = Array.from({ length: settings.initialSnakeLength }, (_, i) => ({ x: 10 - i, y: 10 }));
 
     console.log("Settings set:", settings);
+    settingsLoaded = true
   } catch (error) {
     console.error("Settings failed to load:", error);
   }
 };
+
 
 fetchSettings();
 
@@ -125,6 +129,12 @@ function collisionCheck() {
 }
 
 function gameStart() {
+  if (!settingsLoaded) {
+    console.error("Settings are not yet loaded. Please wait.");
+    return;
+  }
+
+
   if (!started && !paused) {
     clearInterval(gameinterval);
     gameinterval = setInterval(updateGame, 1000 / snakeSpeed);
