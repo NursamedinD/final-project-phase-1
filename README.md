@@ -37,6 +37,5 @@ This project was made using:
 # Credits
 
 Like mentioned  above in the title, this game was based off the classic Snake Game, made by Taneli Armanto in 1988 which could be played on the Nokia 6110
-=======
-# Test
->>>>>>> refs/remotes/origin/main
+
+
