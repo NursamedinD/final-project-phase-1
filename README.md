@@ -36,7 +36,7 @@ This project was made using:
 
 # Credits
 
-Like mentioned  above in the title, this game was based off the classic Snake Game, made by Taneli Armanto in 1988 which could be played on the Nokia 6110
+Like mentioned  above in the title, this game was based off the classic Snake Game, made by Taneli Armanto in 1988 which could be played on the Nokia 6110.
 
 # Notes
 
@@ -44,20 +44,20 @@ How to start:
 1. When the page starts, press Reset to intialize the game. 
 2. Press Start to start playing.
 
-How to change the settings
+How to change the settings:
 1. Below you can find the settings form where you can submit your values
-* Tip
+## Tip
 - Larger grid size value  = bigger snake and berry (gameboard will look smaller compared to the snake and berry).
 - Smaller grid size  value = smaller snake and berry (gameboard will look bigger compared to the snake and berry).
 - Higher speed value = high speed.
 - Lower speed value = low speed.
 
-2. To apply your settings
+2. To apply your settings:
 - Press the update settings button.
 - Press the reset button to update the game with your prefered settings.
 - Press start to start playing.
 
-3. Reverting settings
+3. Reverting settings:
 - the default values are Grid Size 20, Snake speed 5, will always be in the tab so it merely as simple as
 
 - Pressing the update settings button (open up the console to see if your changes have been made).
