@@ -2,11 +2,29 @@
 
 This project here was made by Nursamedin Abdi Dualle, it is based off of the classic game, Snake. This game works on a canvas for the gameboard and the snake is controlled with the arrow keys(Note: it is prefered to read this file through in order to understand how the game works).
 
-## Set up
-Here's is how to start up the game:
-1. Click the link here to open the game in a new page: https://nursamedind.github.io/final-project-phase-1/
-2. Incase of issues, right click and click on inspect to check to see if the settings have loaded (you'll see a line that says "Settings Loaded: Gridsize: 20 Snakespeed: 5).
-3. Press the Reset button then the Start button to begin playing the game.
+# Set up
+
+## Requirements
+* A computer.
+* Internet access.
+
+## Link to the game itself
+Click the link down below to access the game (preferably Open in New Tab to be able to access the README while playing).
+
+# Run locally
+
+## Requirements
+
+* A computer or laptop.
+* Stable Internet access.
+
+## Cloning process
+1. Click the clone button.
+2. Copy the link in the SSH tab.
+3. Go to your terminal and type "git clone git@github.com:NursamedinD/final-project-phase-1.git".
+4. Once done go into the directory by doing cd NursamedinD/final-project-phase-1.
+5. Finally type in code . to open it into your prefered programming app.
+
 
 ## How to play
 
