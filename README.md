@@ -1,6 +1,12 @@
 # Snake Game
 
-This project here was made by Nursamedin Abdi Dualle, it is based off of the classic game, Snake. This game works on a canvas for the gameboard and the snake is controlled with the arrow keys. You can play the game right here: https://nursamedind.github.io/final-project-phase-1/ (Note: it is prefered to read this file through in order to understand how the game works).
+This project here was made by Nursamedin Abdi Dualle, it is based off of the classic game, Snake. This game works on a canvas for the gameboard and the snake is controlled with the arrow keys(Note: it is prefered to read this file through in order to understand how the game works).
+
+## Set up
+Here's is how to start up the game:
+1. Click the link here to open the game in a new page: https://nursamedind.github.io/final-project-phase-1/
+2. Incase of issues, right click and click on inspect to check to see if the settings have loaded (you'll see a line that says "Settings Loaded: Gridsize: 20 Snakespeed: 5).
+3. Press the Reset button then the Start button to begin playing the game.
 
 ## How to play
 
@@ -39,10 +45,6 @@ This project was made using:
 Like mentioned  above in the title, this game was based off the classic Snake Game, made by Taneli Armanto in 1988 which could be played on the Nokia 6110.
 
 # Notes
-
-How to start:
-1. When the page starts, press Reset to intialize the game. 
-2. Press Start to start playing.
 
 How to change the settings:
 1. Below the gameboard, you can find the settings form where you can submit your values
