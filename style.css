@@ -1,6 +1,7 @@
 body {
   font-family: 'VT323', monospace;
   text-align: center;
+  background: rgb(83, 136, 83);
 }
 
 .h1 {
