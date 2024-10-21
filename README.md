@@ -1,6 +1,6 @@
 # Snake Game
 
-This project here is based off of the classic game, Snake. This game works on a canvas for the gameboard and the snake is controlled with the arrow keys. You can play the game right here: https://nursamedind.github.io/final-project-phase-1/ (Note: it is preffered to read this file through in order to understand how the game works).
+This project here was made by Nursamedin Abdi Dualle, it is based off of the classic game, Snake. This game works on a canvas for the gameboard and the snake is controlled with the arrow keys. You can play the game right here: https://nursamedind.github.io/final-project-phase-1/ (Note: it is prefered to read this file through in order to understand how the game works).
 
 ## How to play
 
