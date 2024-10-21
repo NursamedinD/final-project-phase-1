@@ -142,18 +142,13 @@ function gameStart() {
   }
 }
 
-window.onload = () => {
-  resetSettings();
-  drawGame();
-};
-
 function gamePause() {
   if (!paused) {
     clearInterval(gameinterval);
     pauseBtn.textContent = "Resume";
     paused = true;
   } else {
-    gameStart();
+    gameinterval = setInterval(updateGame, 1000 / snakeSpeed);
     pauseBtn.textContent = "Pause"
     paused = false;
   }
@@ -164,11 +159,15 @@ function gameOver() {
   clearInterval(gameinterval);
   alert(`Game Over! Your score: ${score}`);
 
-  resetSettings();
-  drawGame();
+  snake = [{ x: 10, y: 10 }];
+  direction = { x: 1, y: 0 };
+  berry = getRandomBerryPosition();
+  score = 0;
+  scoreText.textContent = score;
+  started = false;
+  paused = false;
+  pauseBtn.textContent = 'Pause';
 }
-
-
 
 function resetSettings() {
   snake = [{ x: 10, y: 10 }];
@@ -179,10 +178,7 @@ function resetSettings() {
   clearInterval(gameinterval);
 
   started = false;
-  paused = false
-  pauseBtn.textContent = 'Pause'
-
-  gameStart();
+  // resetSettings();
 }
 
 
