@@ -16,8 +16,7 @@ let gridSize = 20;
 let berry = getRandomBerryPosition();
 
 
-let settingsLoaded = false;
-let gameStared = false;
+let settingsLoaded = false
 
 const fetchSettings = async () => {
   try {
@@ -30,12 +29,7 @@ const fetchSettings = async () => {
     snake = Array.from({ length: settings.initialSnakeLength }, (_, i) => ({ x: 10 - i, y: 10 }));
 
     console.log("Settings set:", settings);
-    settingsLoaded = true;
-    gameStared = false;
-
-    startBtn.disabled = false;
-    resetBtn.disabled = false;
-    
+    settingsLoaded = true
   } catch (error) {
     console.error("Settings failed to load:", error);
   }
@@ -139,7 +133,6 @@ function gameStart() {
     console.error("Settings are not yet loaded. Please wait.");
     return;
   }
-  
 
 
   if (!started && !paused) {
@@ -155,7 +148,7 @@ function gamePause() {
     pauseBtn.textContent = "Resume";
     paused = true;
   } else {
-    gameinterval = setInterval(updateGame, 1000 / snakeSpeed);
+    gameStart();
     pauseBtn.textContent = "Pause"
     paused = false;
   }
@@ -242,10 +235,6 @@ document.addEventListener("keydown", (e) => {
 
 pauseBtn.addEventListener("click", gamePause);
 startBtn.addEventListener("click", () => {
-  if (!settingsLoaded) {
-    console.error("Settings not loaded. Please wait.");
-    return;
-  }
   if (!started) {
     gameStart();
   }
@@ -254,10 +243,6 @@ startBtn.addEventListener("click", () => {
 resetBtn.addEventListener("click", () => {
   resetSettings();
   drawGame();
-  gameStared = false;
 });
-
-startBtn.disabled = true;
-resetBtn.disabled = true;
 
 drawGame();
