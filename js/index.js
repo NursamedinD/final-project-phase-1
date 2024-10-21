@@ -116,11 +116,12 @@ function collisionCheck() {
     console.error("Snake is empty or undefined");
     return;
   }
-
+  //game border
   if (snake[0].x < 0 || snake[0].x >= canvas.width / gridSize || snake[0].y < 0 || snake[0].y >= canvas.height / gridSize) {
     gameOver();
   }
 
+  // snake's body
   for (let i = 1; i < snake.length; i++) {
     if (snake[0].x === snake[i].x && snake[0].y === snake[i].y) {
       gameOver();
