@@ -134,8 +134,11 @@ function gameStart() {
     return;
   }
 
-
   if (!started && !paused) {
+    if (snake.length === 0) {
+      console.error("Snake array is empty. Cannot start the game.");
+      return;
+    }
     clearInterval(gameinterval);
     gameinterval = setInterval(updateGame, 1000 / snakeSpeed);
     started = true;
