@@ -148,7 +148,7 @@ function gamePause() {
     pauseBtn.textContent = "Resume";
     paused = true;
   } else {
-    gameStart();
+    gameinterval = setInterval(updateGame, 1000 / snakeSpeed);
     pauseBtn.textContent = "Pause"
     paused = false;
   }
