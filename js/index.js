@@ -16,7 +16,8 @@ let gridSize = 20;
 let berry = getRandomBerryPosition();
 
 
-let settingsLoaded = false
+let settingsLoaded = false;
+let gameStared = false;
 
 const fetchSettings = async () => {
   try {
@@ -29,7 +30,12 @@ const fetchSettings = async () => {
     snake = Array.from({ length: settings.initialSnakeLength }, (_, i) => ({ x: 10 - i, y: 10 }));
 
     console.log("Settings set:", settings);
-    settingsLoaded = true
+    settingsLoaded = true;
+    gameStared = false;
+
+    startBtn.disabled = false;
+    resetBtn.disabled = false;
+    
   } catch (error) {
     console.error("Settings failed to load:", error);
   }
@@ -236,6 +242,10 @@ document.addEventListener("keydown", (e) => {
 
 pauseBtn.addEventListener("click", gamePause);
 startBtn.addEventListener("click", () => {
+  if (!settingsLoaded) {
+    console.error("Settings not loaded. Please wait.");
+    return;
+  }
   if (!started) {
     gameStart();
   }
@@ -244,6 +254,10 @@ startBtn.addEventListener("click", () => {
 resetBtn.addEventListener("click", () => {
   resetSettings();
   drawGame();
+  gameStared = false;
 });
+
+startBtn.disabled = true;
+resetBtn.disabled = true;
 
 drawGame();
