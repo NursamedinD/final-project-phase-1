@@ -142,6 +142,11 @@ function gameStart() {
   }
 }
 
+window.onload = () => {
+  resetSettings();
+  drawGame();
+};
+
 function gamePause() {
   if (!paused) {
     clearInterval(gameinterval);
@@ -163,10 +168,7 @@ function gameOver() {
   drawGame();
 }
 
-window.onload = () => {
-  resetSettings();
-  drawGame();
-};
+
 
 function resetSettings() {
   snake = [{ x: 10, y: 10 }];
@@ -179,6 +181,8 @@ function resetSettings() {
   started = false;
   paused = false
   pauseBtn.textContent = 'Pause'
+
+  gameStart();
 }
 
 
