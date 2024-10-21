@@ -159,14 +159,8 @@ function gameOver() {
   clearInterval(gameinterval);
   alert(`Game Over! Your score: ${score}`);
 
-  snake = [{ x: 10, y: 10 }];
-  direction = { x: 1, y: 0 };
-  berry = getRandomBerryPosition();
-  score = 0;
-  scoreText.textContent = score;
-  started = false;
-  paused = false;
-  pauseBtn.textContent = 'Pause';
+  resetSettings();
+  drawGame();
 }
 
 window.onload = () => {
@@ -185,7 +179,6 @@ function resetSettings() {
   started = false;
   paused = false
   pauseBtn.textContent = 'Pause'
-  // resetSettings();
 }
 
 
